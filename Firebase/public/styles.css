@@ -1,0 +1,203 @@
+:root{
+    --background:linear-gradient(to bottom, #7400bc, #2b004d);
+    --text:#e6f1ff;
+    --section:#242936;
+    --hud:hsl(99, 80%, 60%);
+    --link:#6ea1ff;
+    --grid: #1a1e29;
+}
+*{
+    box-sizing: border-box;
+}
+html{
+    min-height: 100%;
+}
+body{
+    margin: 0;
+    background: var(--background);
+    color: var(--text);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+header{
+    padding: 2rem 1rem;
+    text-align: center;
+    opacity: 1;
+    background: linear-gradient(to bottom, #2b004d, #7400bc);
+}
+a{
+    color: var(--link);
+}
+h1{
+    letter-spacing: .5px;
+    margin: 0;
+}
+.paragraph{
+    text-indent: 2em;
+    padding: 0.5rem;
+}
+nav{
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    padding: .75rem;
+    background: rgba(255, 255, 255, 0.13);
+    position: sticky;top: 0;
+}
+nav:hover{
+    overflow: auto;
+}
+nav a{
+    color: var(--text);
+    text-decoration: none;
+    padding: .5rem .75rem;
+    border-radius: 8px;
+    transition: transform .15s ease, background .15s ease;
+}
+nav a:hover{
+    background: rgba(90, 90, 90, 0.376);;
+    transform: translateY(-2px);
+    text-decoration: underline;
+}
+main{
+    max-width: 1300px;
+    margin: 1.5rem auto;
+    padding: 0 1rem;
+    flex-grow: 1;
+    width: 100%;
+}
+footer{
+    background: var(--section);
+    padding: 1rem 2rem;
+    p{
+        font-size: 14px;
+    }
+}
+.footer-separator{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+}
+#right-footer, #left-footer{
+    font-weight: 500;
+}
+#right-footer{
+    text-align: right;
+}
+#left-footer{
+    text-align: left;
+}
+#center-footer{
+    text-align: center;
+}
+#copyright, #email, #updated, #contact, #discord{
+    font-weight: 500;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #ccc;
+}
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+th {
+    background-color: #f2f2f2;
+    color: #333;
+}
+.section{
+    background: var(--section);
+    padding: 1rem 1.25rem;
+    border-radius: 14px;
+    margin-bottom: 1rem;
+    border:1px solid rgba(255,255,255,.06)
+}
+#table-of-contents a{
+    display: block;
+    text-decoration: none;
+    color: var(--link);
+    padding: .25rem .75rem;
+    border-radius: 8px;
+    transition: transform .15s ease, background .15s ease;
+    line-height: 3;
+}
+#table-of-contents a:hover{
+    background: rgba(255,255,255,.08);;
+    text-decoration: underline;
+}
+.badge{
+    display: inline-block;
+    background: var(--hud);
+    color: #221d00;
+    padding:.2rem .5rem;
+    border-radius:999px;
+    font-weight:700;
+    font-size:.85rem;
+}
+.portrait{
+    width: auto;
+    height: 500px;
+    max-width: 100%;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+.landscape{
+    width: 500px;
+    height: auto;
+    max-width: 100%;
+    display: block;
+    margin-right: auto; 
+    margin-left: auto;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto auto;
+    row-gap: 40px;
+    column-gap: 40px;
+    /* border: 1px solid #ccc; *//*Use this for testing the div size*/
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    justify-self: center;
+    
+}
+.grid-item {
+    background-color: var(--grid);
+    border: 4px solid #ddd;
+    border-radius: 1rem;
+    padding: 15px;
+    text-align: center;
+    width: 100%;
+    height: fit-content;
+    transition: transform .2s ease, background .2s ease;
+}
+.grid-item:hover{
+    background: #242934;
+    transform: translate(2px,-5px);
+    cursor: pointer;
+}
+.grid-container a{
+    display: contents;
+    color: white;
+    text-decoration: none;
+}
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+        column-gap: 0;
+        row-gap: 20px;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+    }
+}
