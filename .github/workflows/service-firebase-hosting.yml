@@ -1,0 +1,31 @@
+name: Firebase Manual Deploy
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout your repo
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      # 2. Deploy to Firebase Hosting using service account JSON
+      - name: Deploy to Firebase Hosting
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+
+          # Use your service account JSON secret
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_TOKEN }}
+
+          # Your Firebase project ID
+          projectId: YOUR_FIREBASE_PROJECT_ID
+
+          # Folder containing firebase.json and public/
+          entryPoint: Firebase
+
+          # Optional: remove or comment out for production live deployment
+          # channelId: staging
