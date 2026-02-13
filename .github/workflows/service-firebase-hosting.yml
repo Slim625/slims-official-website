@@ -22,7 +22,7 @@ jobs:
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_TOKEN }}
 
           # Your Firebase project ID
-          projectId: YOUR_FIREBASE_PROJECT_ID
+          projectId: slims-official-website
 
           # Folder containing firebase.json and public/
           entryPoint: Firebase
