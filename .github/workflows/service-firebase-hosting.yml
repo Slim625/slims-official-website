@@ -22,5 +22,5 @@ jobs:
         env:
           GOOGLE_APPLICATION_CREDENTIALS: ${{ runner.temp }}/firebase-service-account.json
         run: |
-          echo "${{ secrets.FIREBASE_SERVICE_TOKEN }}" > "$GOOGLE_APPLICATION_CREDENTIALS"
+          echo '${{ secrets.FIREBASE_SERVICE_TOKEN }}' > "$GOOGLE_APPLICATION_CREDENTIALS"
           firebase deploy --project slims-official-website --only hosting
