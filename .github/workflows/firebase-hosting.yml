@@ -1,19 +1,21 @@
-name: Deploy to Firebase Hosting
+name: Firebase Manual Deploy
 
+# This allows you to trigger the workflow manually
 on:
-  push:
-    branches:
-      - main  # change this if your default branch is different
+  workflow_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout Repo
+        uses: actions/checkout@v3
 
-      - uses: FirebaseExtended/action-hosting-deploy@v1
-        with:
-          repoToken: "${{ secrets.GITHUB_TOKEN }}"
-          firebaseServiceAccount: "${{ secrets.FIREBASE_TOKEN }}"
-          projectId: "slims-official-website"
+      - name: Install Firebase Tools
+        run: npm install -g firebase-tools
+
+      - name: Deploy to Firebase
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+        run: |
+          firebase deploy --only hosting
