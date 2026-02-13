@@ -1,0 +1,19 @@
+name: Deploy to Firebase Hosting
+
+on:
+  push:
+    branches:
+      - main  # change this if your default branch is different
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: FirebaseExtended/action-hosting-deploy@v1
+        with:
+          repoToken: "${{ secrets.GITHUB_TOKEN }}"
+          firebaseServiceAccount: "${{ secrets.FIREBASE_TOKEN }}"
+          projectId: "slims-official-website"
