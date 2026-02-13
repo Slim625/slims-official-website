@@ -16,12 +16,11 @@ jobs:
       - name: Install Firebase CLI
         run: npm install -g firebase-tools
 
-      # 3. Deploy using the service account
+      # 3. Deploy using service account with GOOGLE_APPLICATION_CREDENTIALS
       - name: Deploy to Firebase Hosting
-        run: |
-          echo "${{ secrets.FIREBASE_SERVICE_TOKEN }}" > "$HOME/firebase-service-account.json"
-          firebase deploy \
-            --project slims-official-website \
-            --only hosting \
-            --token "$(cat $HOME/firebase-service-account.json)"
         working-directory: Firebase
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ runner.temp }}/firebase-service-account.json
+        run: |
+          echo "${{ secrets.FIREBASE_SERVICE_TOKEN }}" > "$GOOGLE_APPLICATION_CREDENTIALS"
+          firebase deploy --project slims-official-website --only hosting
