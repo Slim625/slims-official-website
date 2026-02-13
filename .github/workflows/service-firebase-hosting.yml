@@ -1,4 +1,4 @@
-name: Firebase Service Hosting Deploy
+name: NEW Firebase Hostomg Deploy
 
 on:
   workflow_dispatch:
