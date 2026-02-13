@@ -8,24 +8,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout your repo
+      # 1. Checkout your repo
       - name: Checkout Repo
         uses: actions/checkout@v3
 
-      # Step 2: Deploy to Firebase Hosting using service account JSON
+      # 2. Install Firebase CLI and deploy using your token
       - name: Deploy to Firebase Hosting
-        uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          repoToken: ${{ secrets.GITHUB_TOKEN }}
-
-          # Use your service account JSON secret
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_TOKEN }}
-
-          # Your Firebase project ID
-          projectId: slims-official-website
-
-          # Folder containing firebase.json and public/
-          entryPoint: Firebase
-
-          # Optional: remove or comment out for production live deployment
-          # channelId: staging
+        run: |
+          npm install -g firebase-tools
+          firebase deploy --project YOUR_FIREBASE_PROJECT_ID --token ${{ secrets.FIREBASE_TOKEN }} --only hosting
+        working-directory: Firebase
