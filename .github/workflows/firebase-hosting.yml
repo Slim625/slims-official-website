@@ -1,4 +1,4 @@
-name: Firebase Manual Deploy
+name: Old Firebase Hosting Deploy (`--token` IS DEPRECATED AND WILL SOON BE REMOVED)
 
 on:
   workflow_dispatch:

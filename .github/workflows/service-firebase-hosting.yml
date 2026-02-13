@@ -1,4 +1,4 @@
-name: Firebase Manual Deploy
+name: NEW Firebase Hosting Deploy
 
 on:
   workflow_dispatch:
@@ -12,20 +12,15 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v3
 
-      # 2. Deploy to Firebase Hosting using service account JSON
+      # 2. Install Firebase CLI
+      - name: Install Firebase CLI
+        run: npm install -g firebase-tools
+
+      # 3. Deploy using service account with GOOGLE_APPLICATION_CREDENTIALS
       - name: Deploy to Firebase Hosting
-        uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          repoToken: ${{ secrets.GITHUB_TOKEN }}
-
-          # Use your service account JSON secret
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_TOKEN }}
-
-          # Your Firebase project ID
-          projectId: slims-official-website
-
-          # Folder containing firebase.json and public/
-          entryPoint: Firebase
-
-          # Optional: remove or comment out for production live deployment
-          # channelId: staging
+        working-directory: Firebase
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ runner.temp }}/firebase-service-account.json
+        run: |
+          echo '${{ secrets.FIREBASE_SERVICE_TOKEN }}' > "$GOOGLE_APPLICATION_CREDENTIALS"
+          firebase deploy --project slims-official-website --only hosting
