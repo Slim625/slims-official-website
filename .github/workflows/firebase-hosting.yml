@@ -16,5 +16,5 @@ jobs:
       - name: Deploy to Firebase Hosting
         run: |
           npm install -g firebase-tools
-          firebase deploy --project YOUR_FIREBASE_PROJECT_ID --token ${{ secrets.FIREBASE_TOKEN }} --only hosting
+          firebase deploy --project slims-official-website --token ${{ secrets.FIREBASE_TOKEN }} --only hosting
         working-directory: Firebase
