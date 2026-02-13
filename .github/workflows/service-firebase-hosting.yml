@@ -1,4 +1,4 @@
-name: Firebase Manual Deploy
+name: Firebase Service Manual Deploy
 
 on:
   workflow_dispatch:
