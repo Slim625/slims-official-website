@@ -23,10 +23,10 @@ jobs:
           firebaseServiceAccount: ${{ secrets.FIREBASE_TOKEN }}
 
           # Your Firebase project ID
-          projectId: slims-official-website.web.app
+          projectId: slims-official-website
 
           # Path to the folder containing firebase.json
-          entryPoint: firebase
+          entryPoint: Firebase
 
           # Optional: preview channel (remove for live deployment)
           #channelId: staging
