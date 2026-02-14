@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const copyright = "© 2026 SlimExtraterrestrial. All rights reserved. Licensed under Apache 2.0.";
+    const copyright = "Copyright © 2026 SlimExtraterrestrial. All rights reserved. \nLicensed under Apache 2.0.";
     const updateCopyrightYear = document.querySelectorAll('#copyright');
 
     const lastUpdatedDate = "Last Updated 2/13/2026"; // <-- manually set the upload date
@@ -7,4 +7,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     updateCopyrightYear.forEach(el => el.textContent = copyright);
     lastUpdatedElements.forEach(el => el.textContent = lastUpdatedDate);
+
 });
